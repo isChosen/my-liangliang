@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.liangliang.dao.GirlsDao" >
+
+    <resultMap id="BaseResultMap" type="com.liangliang.entity.GirlsBean" >
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="age" property="age" jdbcType="INTEGER" />
+        <result column="cup_size" property="cup" jdbcType="VARCHAR" />
+        <result column="herName" property="name" jdbcType="VARCHAR" />
+        <result column="role" property="grade" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        id, age, cup_size, herName, role
+    </sql>
+
+    <!--返回所有数据-->
+    <select id="getAllGirls" resultMap="BaseResultMap" parameterType="java.lang.String" >
+        select * from girl
+    </select>
+
+    <!--根据名字返回数据-->
+    <select id="getGirlsName" resultMap="BaseResultMap" parameterType="java.lang.String" >
+        select
+        <include refid="Base_Column_List" />
+        from girl
+        where herName = #{name, jdbcType=VARCHAR}
+    </select>
+
+
+</mapper>

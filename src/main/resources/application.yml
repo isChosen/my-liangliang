@@ -1,0 +1,29 @@
+
+spring:
+  thymeleaf:
+    mode: LEGACYHTML5
+  datasource:
+    url: jdbc:mysql://localhost:3306/girls?allowMultiQueries=true&useSSL=false&useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: 123456
+    tomcat:
+      max-active: 20
+      max-idle: 10
+      min-idle: 5
+      initial-size: 5
+      max-wait: 10000
+    driver-class-name: com.mysql.jdbc.Driver
+  mvc:
+    favicon:
+      enabled: true
+server:
+  port: 8080
+  session:
+    timeout: 10
+  tomcat:
+    uri-encoding: utf-8
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+
+
+

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Tyhjo</title>
+    <link rel="stylesheet" href="./lib/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+<body>
+    <h2>Hello world!</h2>
+    <h4>Hello Spring Boot!</h4>
+
+    <button id="getAllGirls" class="btn btn-primary">All Girls</button>
+    <button id="getGirlsByName" class="btn btn-success">Part Of Girls</button>
+    <div class="table_wrapper">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>name</th>
+                    <th>cup</th>
+                    <th>age</th>
+                    <th>grade</th>
+                </tr>
+            </thead>
+            <tbody id="dataContain"></tbody>
+        </table>
+    </div>
+    <script src="./lib/jquery-1.12.3.min.js"></script>
+    <script src="./js/main.js" defer></script>
+</body>
+</html>
