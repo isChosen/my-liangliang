@@ -24,7 +24,7 @@ public class GirlsController {
     @Resource
     private GirlsService girlsService;
     // all girls
-    // 当个域名时不需要花括号
+    // 单个域名时不需要花括号
     // @CrossOrigin(origins = {"http://localhost:63343", "http://localhost:8020"})
     @RequestMapping(value="/queryAllGirls", method = RequestMethod.GET)
     public List<GirlsBean> getNames() {
@@ -32,13 +32,18 @@ public class GirlsController {
     }
     // part of girls due to the parameter
     // 注意：使用了 produces 属性，js 发送请求时必须设置 Content-Type = 'UTF-8'
-    // 当个域名时不需要花括号
-    // @CrossOrigin(origins = {"http://localhost:63343", "http://localhost:8020"})
+    // 单个域名时不需要花括号
+    @CrossOrigin(origins = {"http://localhost:63343", "http://localhost:8020", "http://localhost:8088"})
     @RequestMapping(value="/queryGirlsByName", method = {RequestMethod.POST, RequestMethod.GET},
-            produces = "application/json;charset=UTF-8")
+            produces = "application/json; charset=UTF-8")
     public List<GirlsBean> getNames(@RequestBody String request) {
         JSONObject json = JSON.parseObject(request);
         String girlsName = json.getString("name");
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return girlsService.getGirlsName(girlsName);
     }
 }

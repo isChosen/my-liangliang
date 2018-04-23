@@ -20,4 +20,10 @@ public class NavigationController {
         return "index";
     }
 
+    // 聊天室
+    @RequestMapping("/chat")
+    public String chat() {
+        return "pages/chat";
+    }
+
 }
