@@ -5,7 +5,7 @@ window.onload = function() {
 
 // get 方式请求数据
 $('#getAllGirls').click(function() {
-    setTimeout(myAllGirls.bind(this), 1000);
+    setTimeout(myAllGirls.bind(this, true), 1000);
     // myAllGirls(true);
 });
 // post 方式请求数据
@@ -41,6 +41,7 @@ var myAllGirls = function (boolean) {
     $.ajax({
         type: 'GET',
         url: 'http://localhost:8080/girls/queryAllGirls',
+        data: {'pn': 2},
         async: boolean,
         dataType: 'json'
     }).fail(function (err) {

@@ -1,4 +1,4 @@
-package com.liangliang.config;
+package com.liangliang.conf;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

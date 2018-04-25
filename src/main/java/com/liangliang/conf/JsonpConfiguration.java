@@ -1,4 +1,4 @@
-package com.liangliang.config;
+package com.liangliang.conf;
 
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.AbstractJsonpResponseBodyAdvice;

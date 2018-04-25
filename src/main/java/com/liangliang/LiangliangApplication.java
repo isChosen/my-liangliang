@@ -17,4 +17,8 @@ public class LiangliangApplication extends SpringBootServletInitializer {
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
 		return builder.sources(LiangliangApplication.class);
 	}
+
+
+
+
 }

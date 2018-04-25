@@ -2,6 +2,7 @@ package com.liangliang.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.github.pagehelper.PageHelper;
 import com.liangliang.entity.GirlsBean;
 import com.liangliang.service.GirlsService;
 import org.springframework.web.bind.annotation.*;
@@ -27,8 +28,11 @@ public class GirlsController {
     // 单个域名时不需要花括号
     // @CrossOrigin(origins = {"http://localhost:63343", "http://localhost:8020"})
     @RequestMapping(value="/queryAllGirls", method = RequestMethod.GET)
-    public List<GirlsBean> getNames() {
+    public List<GirlsBean> getNames(@RequestParam(value = "pn", defaultValue = "1") Integer pn) {
+        /* 第一个参数是第几页；第二个参数是每页显示条数 */
+        PageHelper.startPage(pn, 3);
         return girlsService.getAllGirls();
+
     }
     // part of girls due to the parameter
     // 注意：使用了 produces 属性，js 发送请求时必须设置 Content-Type = 'UTF-8'

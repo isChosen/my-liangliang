@@ -45,12 +45,15 @@
 			<artifactId>nekohtml</artifactId>
 			<version>1.9.22</version>
 		</dependency>
-		<!--更改文件，不需重启服务-->
+		<!--spring boot 热部署-->
+		<!--修改类=>保存: 应用会重启-->
+		<!--修改配置文件=>保存: 应用会重启-->
+		<!--修改页面=>保存: 应用会重启, 页面会刷新(原理是将 application.yml 中的 spring.thymeleaf.cache 设为 false)-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
-			<version>1.5.9.RELEASE</version>
-			<scope>provided</scope>
+			<!--<version>1.5.9.RELEASE</version>-->
+			<!--<scope>provided</scope>-->
 			<optional>true</optional>
 		</dependency>
 		<!--mybatis-->
@@ -70,6 +73,12 @@
 			<artifactId>fastjson</artifactId>
 			<version>1.2.40</version>
 		</dependency>
+		<!--分页 pagehelper-->
+		<dependency>
+			<groupId>com.github.pagehelper</groupId>
+			<artifactId>pagehelper</artifactId>
+			<version>4.1.6</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -77,6 +86,10 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<!-- fork: 如果没有该项配置, devtools 不会起作用, 即应用不会 restart -->
+					<fork>true</fork>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

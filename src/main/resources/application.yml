@@ -2,6 +2,7 @@
 spring:
   thymeleaf:
     mode: LEGACYHTML5
+    cache: false
   datasource:
     url: jdbc:mysql://localhost:3306/girls?allowMultiQueries=true&useSSL=false&useUnicode=true&characterEncoding=UTF-8
     username: root
@@ -18,12 +19,17 @@ spring:
       enabled: true
 server:
   port: 8080
-  session:
-    timeout: 10
   tomcat:
     uri-encoding: utf-8
+  servlet:
+    session:
+      timeout: 10
 mybatis:
   mapper-locations: classpath:mapper/*.xml
-
+#pagehelper:
+#    helper-dialect: mysql
+#    reasonable: true
+#    support-methods-arguments: true
+#    params: count=countSql
 
 

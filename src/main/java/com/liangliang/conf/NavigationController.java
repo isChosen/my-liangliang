@@ -1,4 +1,4 @@
-package com.liangliang.config;
+package com.liangliang.conf;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
