@@ -1,7 +1,7 @@
 
 spring:
   thymeleaf:
-    mode: LEGACYHTML5
+    mode: HTML
     cache: false
   datasource:
     url: jdbc:mysql://localhost:3306/girls?allowMultiQueries=true&useSSL=false&useUnicode=true&characterEncoding=UTF-8

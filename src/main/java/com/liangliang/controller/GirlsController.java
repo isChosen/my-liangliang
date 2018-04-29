@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by IntelliJ IDEA.
@@ -26,15 +27,16 @@ public class GirlsController {
     private GirlsService girlsService;
     // all girls
     // 单个域名时不需要花括号
-    // @CrossOrigin(origins = {"http://localhost:63343", "http://localhost:8020"})
-    @RequestMapping(value="/queryAllGirls", method = RequestMethod.GET)
-    public List<GirlsBean> getNames(@RequestParam(value = "pn", defaultValue = "1") Integer pn) {
-        /* 第一个参数是第几页；第二个参数是每页显示条数 */
-        PageHelper.startPage(pn, 3);
-        return girlsService.getAllGirls();
+    @CrossOrigin(origins = {"http://localhost:63343", "http://localhost:8020", "http://localhost:8088"})
+    @RequestMapping(value="/queryAllGirls", method = RequestMethod.POST, produces = "application/json; charset=UTF-8")
+    public Map<String, Object> getAllGirls(@RequestBody String request) {
+        JSONObject json = JSON.parseObject(request);
+        int pageNum = json.getString("pageNum") == null? 1: json.getIntValue("pageNum");
+        int pageSize = json.getString("pageSize") == null? 10: json.getIntValue("pageSize");
 
+        return girlsService.getAllGirls(pageNum, pageSize);
     }
-    // part of girls due to the parameter
+    // girls with the same name
     // 注意：使用了 produces 属性，js 发送请求时必须设置 Content-Type = 'UTF-8'
     // 单个域名时不需要花括号
     @CrossOrigin(origins = {"http://localhost:63343", "http://localhost:8020", "http://localhost:8088"})
