@@ -25,7 +25,7 @@ public class GirlsController {
 
     @Resource
     private GirlsService girlsService;
-    // all girls
+    // all girls, 有分页
     // 单个域名时不需要花括号
     @CrossOrigin(origins = {"http://localhost:63343", "http://localhost:8020", "http://localhost:8088"})
     @RequestMapping(value="/queryAllGirls", method = RequestMethod.POST, produces = "application/json; charset=UTF-8")
@@ -36,7 +36,7 @@ public class GirlsController {
 
         return girlsService.getAllGirls(pageNum, pageSize);
     }
-    // girls with the same name
+    // girls with the same name, 没有做分页
     // 注意：使用了 produces 属性，js 发送请求时必须设置 Content-Type = 'UTF-8'
     // 单个域名时不需要花括号
     @CrossOrigin(origins = {"http://localhost:63343", "http://localhost:8020", "http://localhost:8088"})

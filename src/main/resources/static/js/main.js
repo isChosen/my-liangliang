@@ -2,11 +2,11 @@
 window.onload = function() {
     getAllGirls(1, 10);
     
-    // get 方式请求数据
+    // get 方式请求数据, 分页
     $('#allGirls').click(function () {
         setTimeout(getAllGirls.bind(this, 1, 10), 1000);
     });
-    // post 方式请求数据
+    // post 方式请求数据, 没有分页
     $('#someGirls').click(getSomeGirls.bind(this, 1, 10, 'Victoria'));
 };
 /*~~~~~~~~~~  function  ~~~~~~~~~~*/
@@ -60,7 +60,7 @@ function getSomeGirls(pageNum, pageSize, girl) {
             "</tr>";
         });
         $('.layui-table tbody').html(html);
-        paging(pageNum, pageSize, data, getSomeGirls);
+        $('#pagination').html('');
     })
 }
 
