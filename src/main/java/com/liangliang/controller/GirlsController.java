@@ -27,7 +27,7 @@ public class GirlsController {
     private GirlsService girlsService;
     // all girls, 有分页
     // 单个域名时不需要花括号
-    @CrossOrigin(origins = {"http://localhost:63343", "http://localhost:8020", "http://localhost:8088"})
+    @CrossOrigin(origins = {"http://localhost:63343", "http://localhost:8020", "http://localhost:4300"})
     @RequestMapping(value="/queryAllGirls", method = RequestMethod.POST, produces = "application/json; charset=UTF-8")
     public Map<String, Object> getAllGirls(@RequestBody String request) {
         JSONObject json = JSON.parseObject(request);

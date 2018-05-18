@@ -74,7 +74,7 @@ function paging(curr, size, data, callback) {
             curr: curr,
             limit: size,
             limits: [10, 20, 30],
-            groups: 2,
+            groups: 3,
             // first: '首页',
             // last: '尾页',
             prev: '<i class="layui-icon">&#58883;</i>',
