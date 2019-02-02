@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>my-ajax</title>
+</head>
+<body>
+<h3>自定义 ajax</h3>
+<script>
+
+    window.onload = function() {
+        console.log('hello XMLHttpRequest');
+        // 3s 后调用 myAjax
+        // setTimeout(myAjax.bind(null, "https://api.github.com/users", 'get', null, _callback), 3000); // get 请求
+        setTimeout(myAjax.bind(null, "http://localhost:8080/girls/queryGirlsByName", 'post', JSON.stringify({name: 'Victoria'}), _callback), 3000); // post 请求
+    }
+
+
+    // myAjax 的回调函数
+    function _callback(data) {
+        console.dir(data);
+    }
+
+    // 自定义 ajax, 类型仅限于 get 和 post
+    function myAjax(url, type, params, callback) {
+        var xhr = null;
+        var args = null;
+        xhr = createXHR(); // IE7+
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4) {
+                if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304) {
+                    callback(xhr.responseText);
+                } else {
+                    console.log("Request was unsuccessful: "+ xhr.status);
+                }
+            }
+        };
+        xhr.open(type, url, true); // 类型, 连接, 是否异步
+        if (type.toLowerCase() == 'post') {
+            // xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); // 默认的表单提交
+            xhr.setRequestHeader("Content-Type", "application/json; charset=UTF-8"); // json 键值对
+            args = params;
+        }
+        xhr.send(args);
+    }
+
+    // xhr compatiblity
+    function createXHR() {
+        if (typeof XMLHttpRequest != "undefined") {
+            return new XMLHttpRequest(); // IE7+
+        } else if (typeof ActiveXObject != "undefined") {
+            if (typeof arguments.callee.activeXString != "string") {
+                var versions = ["MSXML2.XMLHttp.6.0", "MSXML2.XMLHttp.3.0", "MSXML2.XMLHttp"], i, len;
+                for (i = 0, len = versions.length; i < len; i++) {
+                    try {
+                        new ActiveXObject(versions[i]);
+                        arguments.callee.activeXString = versions[i];
+                        break;
+                    } catch (ex) {
+                        console.log(ex);
+                    }
+                }
+            }
+            return new ActiveXObject(arguments.callee.activeXString);
+        } else {
+            throw new Error("No XHR object available.");
+        }
+    }
+</script>
+</body>
+</html>
