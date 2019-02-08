@@ -5,18 +5,17 @@
     <resultMap id="BaseResultMap" type="com.liangliang.entity.GirlsBean" >
         <id column="id" property="id" jdbcType="BIGINT" />
         <result column="age" property="age" jdbcType="INTEGER" />
-        <result column="cup_size" property="cup" jdbcType="VARCHAR" />
-        <result column="herName" property="name" jdbcType="VARCHAR" />
+        <result column="nick" property="name" jdbcType="VARCHAR" />
         <result column="role" property="grade" jdbcType="VARCHAR" />
     </resultMap>
 
     <sql id="Base_Column_List" >
-        id, age, cup_size, herName, role
+        id, age, nick, role
     </sql>
 
     <!--返回所有数据-->
     <select id="getAllGirls" resultMap="BaseResultMap" parameterType="java.lang.String" >
-        select * from girl
+        select * from girl where deleted=0
     </select>
 
     <!--根据名字返回数据-->
@@ -24,7 +23,7 @@
         select
         <include refid="Base_Column_List" />
         from girl
-        where herName = #{name, jdbcType=VARCHAR}
+        where nick = #{name, jdbcType=VARCHAR}
     </select>
 
 

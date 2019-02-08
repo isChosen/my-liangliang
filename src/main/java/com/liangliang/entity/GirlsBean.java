@@ -10,7 +10,6 @@ package com.liangliang.entity;
 public class GirlsBean {
     private Long id;
     private Integer age;
-    private String cup;
     private String name;
     private String grade;
 
@@ -28,14 +27,6 @@ public class GirlsBean {
 
     public void setAge(Integer age) {
         this.age = age;
-    }
-
-    public String getCup() {
-        return cup;
-    }
-
-    public void setCup(String cup) {
-        this.cup = cup;
     }
 
     public String getName() {

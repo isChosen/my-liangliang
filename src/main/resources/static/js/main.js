@@ -8,6 +8,29 @@ window.onload = function() {
     });
     // post 方式请求数据, 没有分页
     $('#someGirls').click(getSomeGirls.bind(this, 1, 10, 'Victoria'));
+
+
+
+    // 上传文件
+    /*$('#upLoad').change(function (e) {
+        var formData = new FormData();
+
+        formData.append('file', this.files);
+        console.log(this.files); // FileList 对象，不是数组
+        console.log(formData); // undefined!
+        console.log(formData['file']); // undefined，获取不到
+        $.ajax({
+            url: 'http://localhost:8090/file/upload',
+            type: 'post',
+            data: formData,
+            processData: false, // 不处理发送的数据，因为 data 值是FormData 对象，不需要对数据做处理
+            contentType: false // 不设设置Content-type 请求头
+        }).error(function(err) {
+            console.log(err);
+        }).success(function(data) {
+            console.log(data);
+        })
+    })*/
 };
 /*~~~~~~~~~~  function  ~~~~~~~~~~*/
 
@@ -15,7 +38,7 @@ window.onload = function() {
 function getAllGirls (pageNum, pageSize) {
     $.ajax({
         type: 'POST',
-        url: 'http://localhost:8080/girls/queryAllGirls',
+        url: 'http://localhost:8090/girls/queryAllGirls',
         data: JSON.stringify({'pageNum': pageNum, 'pageSize': pageSize}),
         dataType: 'json',
         contentType: 'application/json; charset=UTF-8'
@@ -28,7 +51,6 @@ function getAllGirls (pageNum, pageSize) {
             html += "<tr>"+
                 "<td>"+ item.id +"</td>"+
                 "<td>"+ item.name +"</td>"+
-                "<td>"+ item.cup +"</td>"+
                 "<td>"+ item.age +"</td>"+
                 "<td>"+ item.grade +"</td>"+
             "</tr>";
@@ -41,7 +63,7 @@ function getAllGirls (pageNum, pageSize) {
 function getSomeGirls(pageNum, pageSize, girl) {
     $.ajax({
         type: 'POST',
-        url: 'http://localhost:8080/girls/queryGirlsByName',
+        url: 'http://localhost:8090/girls/queryGirlsByName',
         contentType: 'application/json; charset=UTF-8',
         data: JSON.stringify({name: girl}),
         dataType: 'json'
@@ -54,7 +76,6 @@ function getSomeGirls(pageNum, pageSize, girl) {
             html += "<tr>"+
                 "<td>"+ item.id +"</td>"+
                 "<td>"+ item.name +"</td>"+
-                "<td>"+ item.cup +"</td>"+
                 "<td>"+ item.age +"</td>"+
                 "<td>"+ item.grade +"</td>"+
             "</tr>";
