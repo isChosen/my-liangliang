@@ -55,8 +55,6 @@ public class GirlsController {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }*/
-        List<GirlsBean> list = girlsService.getGirlsName(girlsName);
-
-        return list;
+        return girlsService.getGirlsName(girlsName);
     }
 }
