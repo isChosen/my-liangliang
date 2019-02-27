@@ -10,7 +10,7 @@ package com.liangliang.entity;
 public class GirlsBean {
     private Long id;
     private Integer age;
-    private String name;
+    private String nick;
     private String grade;
 
     public Long getId() {
@@ -29,12 +29,12 @@ public class GirlsBean {
         this.age = age;
     }
 
-    public String getName() {
-        return name;
+    public String getNick() {
+        return nick;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNick(String nick) {
+        this.nick = nick;
     }
 
     public String getGrade() {

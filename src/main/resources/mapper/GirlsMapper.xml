@@ -5,7 +5,7 @@
     <resultMap id="BaseResultMap" type="com.liangliang.entity.GirlsBean" >
         <id column="id" property="id" jdbcType="BIGINT" />
         <result column="age" property="age" jdbcType="INTEGER" />
-        <result column="nick" property="name" jdbcType="VARCHAR" />
+        <result column="nick" property="nick" jdbcType="VARCHAR" />
         <result column="role" property="grade" jdbcType="VARCHAR" />
     </resultMap>
 
